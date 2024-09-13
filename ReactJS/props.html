@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">    
+        // PostItem.js
+        function PostItem(props) {
+            return (
+                <div className="post-item">
+                    <img src={props.image} alt={props.title}/>
+                    <h2 className="post-title">{props.title}</h2>
+                    <p className="post-desc">{props.description}</p>
+                    <p className="post-published">{props.published}</p>
+                </div>
+            )
+        }
+    
+        // App.js
+        function App() {
+            return (
+                <div id="wrapper">
+                    <PostItem
+                        title="Tieu de 1"
+                        image="https://i.pinimg.com/564x/1b/61/7e/1b617e412ed15e3d35365cdaf5a5a7cd.jpg"
+                        description="Mo ta 1"
+                        published="Ngay dang 1"
+                    />
+                    <PostItem
+                        title="Tieu de 2"
+                        image="https://i.pinimg.com/736x/3d/17/6e/3d176e1b18e10071afb1df9f78ee7c5f.jpg"
+                        description="Mo ta 2"
+                        published="Ngay dang 2"
+                    />
+                </div>
+            )
+        }
+           
+        ReactDOM.render(<App />, document.getElementById('root'))
+    </script>
+</body>
+<script src="./app.js"></script>
+</html>
