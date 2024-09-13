@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+
+    <div id="root">
+
+    </div>
+
+    <script>        
+       
+        const postItem = React.createElement(
+            'div', 
+            {
+                className: 'post-item',
+            }, 
+            React.createElement('h2', {title: 'ABC'}, 'A'),
+            React.createElement('p', {}, 'B')
+        );
+        // console.log(postItem)
+
+        // const root = document.getElementById('root');
+
+        // React-DOM -> render UI (elemt, root, callback)
+        ReactDOM.render(postItem, root);
+
+				        
+        // ReactDOM 18
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container)
+        root.render(postItem);
+        
+    </script>
+</body>
+<script src="./app.js"></script>
+</html>
