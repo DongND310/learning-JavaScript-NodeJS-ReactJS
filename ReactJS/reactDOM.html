@@ -38,6 +38,35 @@
         root.render(postItem);
         
     </script>
+
+<script>        
+    // DOM
+    const ulDOM = document.createElement('ul');
+    ulDOM.id = 'ul-id'
+    ulDOM.style = 'color: #000000; font-size: 18px'
+
+    const liDOM1 = document.createElement('li');
+    liDOM1.innerText = 'a'
+
+    const liDOM2 = document.createElement('li');
+    liDOM2.innerText = 'b'
+
+    ulDOM.appendChild(liDOM1);
+    ulDOM.appendChild(liDOM2);
+
+    document.body.appendChild(ulDOM);
+
+    // React.createElement(type, props, children, n)
+    const ulReact = React.createElement(
+        'ul', 
+        {
+            id: 'ul-id',
+            style: 'color: #000000; font-size: 18px'
+        }, 
+        React.createElement('li', {id: 'li-1'}, 'a'),
+        React.createElement('li', null, 'b'),
+    );
+</script>
 </body>
 <script src="./app.js"></script>
 </html>
