@@ -11,7 +11,7 @@
 <body>
     <div id="root"></div>
 
-    <script type="text/babel">    
+    <!-- <script type="text/babel">    
         // PostItem.js
         function PostItem(props) {
             return (
@@ -45,7 +45,61 @@
         }
            
         ReactDOM.render(<App />, document.getElementById('root'))
+    </script> -->
+
+    <script type="text/babel">
+        const courses = [
+            {
+                "id": 1,
+                "title": "Kh1",
+                "description": "Mo ta 1",
+                "thumbnail_cdn": "https://i.pinimg.com/564x/1b/61/7e/1b617e412ed15e3d35365cdaf5a5a7cd.jpg",
+                "students_count": 3000,
+            },
+            {
+                "id": 2,
+                "title": "Kh2",
+                "description": "Mo ta 2",
+                "thumbnail_cdn": "https://i.pinimg.com/736x/3d/17/6e/3d176e1b18e10071afb1df9f78ee7c5f.jpg",
+                "students_count": 5000,
+            },
+        ]
+
+        const CourseItem = props => (
+            <div>
+                <h2>{props.title}</h2>
+                <img src={props.image} alt=""/>
+                <p>{props.description}</p>
+                <p>{props.studentsCount}</p>
+            </div>
+        )
+
+        function App() {
+            return (
+                <div id ="wrapper">
+                    {
+                    courses.map(course => (
+                        <CourseItem 
+                            key = {course.id} 
+                            title = {course.title} 
+                            image = {course.thumbnail_cdn} 
+                            description = {course.description} 
+                            studentsCount = {course.students_count} 
+                            />
+                        ))
+                    }
+
+                    <button onDoubleClick={
+                        (event) => console.log(event.target)
+                    }> Click
+                        
+                    </button>
+                </div>
+            )
+        }
+        ReactDOM.render(<App />, document.getElementById('root'))
+
     </script>
 </body>
-<script src="./app.js"></script>
+<!-- <script src="./app.js"></script> -->
 </html>
