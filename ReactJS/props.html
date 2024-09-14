@@ -11,7 +11,7 @@
 <body>
     <div id="root"></div>
 
-    <!-- <script type="text/babel">    
+    <script type="text/babel">    
         // PostItem.js
         function PostItem(props) {
             return (
@@ -45,7 +45,7 @@
         }
            
         ReactDOM.render(<App />, document.getElementById('root'))
-    </script> -->
+    </script>
 
     <script type="text/babel">
         const courses = [
@@ -65,26 +65,33 @@
             },
         ]
 
-        const CourseItem = props => (
-            <div>
-                <h2>{props.title}</h2>
-                <img src={props.image} alt=""/>
-                <p>{props.description}</p>
-                <p>{props.studentsCount}</p>
-            </div>
-        )
+        function CourseItem({course, onClick}) {
+            return (
+                <div>
+                    <h2 onClick={() => onClick(course)}>{course.title} </h2>
+                    <img width="60%" src={course.thumbnail_cdn} alt=""/>
+                    <p>{course.description}</p>
+                    <p>{course.students_count}</p>
+                </div>
+            )
+        }
+            
+        
 
         function App() {
+
+            const handleClick = (course) => {
+                console.log(course.title)
+            }
+
             return (
                 <div id ="wrapper">
                     {
                     courses.map(course => (
                         <CourseItem 
                             key = {course.id} 
-                            title = {course.title} 
-                            image = {course.thumbnail_cdn} 
-                            description = {course.description} 
-                            studentsCount = {course.students_count} 
+                            course={course} 
+                            onClick={handleClick}
                             />
                         ))
                     }
@@ -100,6 +107,64 @@
         ReactDOM.render(<App />, document.getElementById('root'))
 
     </script>
+
+<script type="text/babel">
+    const Form = {
+        Input() {
+            return <input />
+        },
+        Checkbox() {
+            return <input type="checkbox" />
+        }
+    }
+
+    function Button({title, href, onClick}) {
+        let Component = 'button';
+        const props = {}
+
+        if (href) {
+            Component = 'a'
+            props.href = href
+        }
+
+        if (onClick) {
+            props.onClick = onClick
+        }
+
+        console.log(props)
+
+        return (
+            <Component {...props}>{title}
+                </Component>
+        )
+    }
+
+    function App({title}) {
+        const type = 'Checkbox';
+        const Component = Form[type];
+        let firstAccess = false;
+
+        return (
+            <div id="wrapper">
+
+                <h1>{title || "Alo"}</h1>
+
+                {firstAccess && <h1>Welcome</h1>}
+                <Component /> 
+
+                <Button 
+                    title="Click here"
+                    href="https://google.com"
+                    onClick={() => console.log(Math.random())}
+                />   
+            </div>
+        )
+    }
+    ReactDOM.render(<App title="Hello world" />, document.getElementById('root'))
+
+</script>
+
+
 </body>
 <!-- <script src="./app.js"></script> -->
 </html>
