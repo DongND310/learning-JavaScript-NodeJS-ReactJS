@@ -118,6 +118,15 @@
         }
     }
 
+    function Input({label, ...inputProps}) {
+        return (
+            <div>
+                <label>{label}</label>
+                <input {...inputProps}/>    
+            </div>
+        )
+    }
+
     function Button({title, href, onClick}) {
         let Component = 'button';
         const props = {}
@@ -139,10 +148,23 @@
         )
     }
 
+    function Button2({children}) {
+        return <button>{children}</button>
+    }
+
+    function List({data, children}) {
+        return (
+            <ul>
+                {data.map((...props) => children(...props))}
+            </ul>
+        )
+    }
+
     function App({title}) {
         const type = 'Checkbox';
         const Component = Form[type];
         let firstAccess = false;
+        const arr = ['a', 'b', 'c', 'd', 'e']
 
         return (
             <div id="wrapper">
@@ -150,6 +172,21 @@
                 <h1>{title || "Alo"}</h1>
 
                 {firstAccess && <h1>Welcome</h1>}
+
+                <List
+                    data = {arr} >
+                    {(item, index) => <li key={index}>{item}</li>}
+                </ List>
+
+                <Input 
+                    label="Full name"
+                    placeholder="Enter name..."
+                    title="Input Full name"
+                    onFocus={() => {
+                        console.log(Math.random())
+                    }}
+                />
+                
                 <Component /> 
 
                 <Button 
@@ -157,7 +194,11 @@
                     href="https://google.com"
                     onClick={() => console.log(Math.random())}
                 />   
+
+                <Button2>Click here</Button2>
+
             </div>
+
         )
     }
     ReactDOM.render(<App title="Hello world" />, document.getElementById('root'))
