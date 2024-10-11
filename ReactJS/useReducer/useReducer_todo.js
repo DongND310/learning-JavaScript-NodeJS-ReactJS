@@ -82,8 +82,8 @@ function App() {
           <h1>To do list</h1>
           <input 
             ref={inputRef}
-            value = {job}
             placeholder='Enter todo...'
+            value = {job}
             onChange={e => {
               dispatch(setJob(e.target.value));
             }} />
